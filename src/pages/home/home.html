@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>HOME</ion-title>
+    
+    <ion-buttons end>
+        <button ion-button (click)='refresh()'>  <ion-icon name='refresh'></ion-icon> </button>
+      </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+
+
+  <!--
+   check page user is from,
+      if signup present a starter tool tip modal to get them started
+
+   check what their income is, if not set prompt them to set
+  -->
+  <div *ngIf="from == 'signin'">
+  <ion-img src='../assets/imgs/logo.png' margin-left='120px' margin-right='70px' width='200px' height='200px'></ion-img>
+   <p> Welcome</p> 
+  </div>
+  
+  <div *ngIf="from == 'signup'">
+    <p> Welcome to Ewallet where we help you track and manage your spending </p>
+    <p> Set Your Earning </p>
+    <p> You can see HELP for more details </p>
+  </div>
+
+  <div *ngIf="earning < 100"> 
+    We realized that you have not set your earning. its currently {{ earning }}
+    
+    <button (click)="setEarning()" ion-button block> Set Earning </button>
+    
+  </div>
+  
+
+  <!--
+    
+    show the list of user expenses, with the items in them.
+    on click go to expenses page
+  -->
+  <div *ngIf="expenses.length == 0">
+    You Have No Expenses Or Items. Please Add Some.
+    <button (click)="addExpenses()" ion-button block> ADD EXPENSES </button>
+  </div>
+
+  <ion-list>
+      <ion-item *ngFor='let expense_0 of expenses' (click)='goToExpensePage(expense_0)'>
+  
+        <p><strong> {{ expense_0.name }} </strong></p>
+        <p> Start From {{ expense_0.dates.start_from }} Ends At {{ expense_0.dates.end_at }} </p>
+        <br>
+        <p><strong> ITEMS </strong> {{ expense_0.items.length }} </p>
+  
+      </ion-item>
+  </ion-list>
+  
+
+
+</ion-content>

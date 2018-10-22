@@ -1,0 +1,44 @@
+<!--
+  Generated template for the ExpenseHistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>EXPENSE HISTORY</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item *ngFor='let expense_0 of expenses'>
+            <p><strong> {{ expense_0.name }} </strong></p>
+            <p> Start From {{ expense_0.dates.start_from }} Ends At {{ expense_0.dates.end_at }} </p>
+            <br>
+            <p><strong> ITEMS </strong></p>
+  
+            <ion-list>
+                <ion-item *ngFor='let item_0 of expense_0.items'>
+                   <ion-card>
+                    <ion-card-header> {{ item_0.name }} </ion-card-header>
+                    <ion-card-content>
+                      <p> {{ item_0.name }}  </p>
+                      <p> {{ item_0.priority }}  </p>
+                      <p> {{ item_0.cost }}  </p>
+                      <p> Frequency {{ item_0.frequency }}  </p>                  
+                    </ion-card-content>
+                  </ion-card>
+                </ion-item>
+            </ion-list>
+  
+            <p *ngIf="expense_0.items.length < 1"> NO ITEMS FOR THIS EXPENSE </p>
+            
+        </ion-item>
+    </ion-list>
+</ion-content>

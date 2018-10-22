@@ -1,0 +1,79 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> {{ expense.name }} </ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)='refresh()'>  <ion-icon name='refresh'></ion-icon> </button>
+      <button ion-button (click)='goToAddItems()'>  <ion-icon name='add'></ion-icon> </button>
+    </ion-buttons>
+  
+  </ion-navbar>
+
+</ion-header>
+ 
+<ion-content padding>
+
+
+  <ion-item>
+      
+      <p><strong> {{ expense.name }} </strong></p>
+
+      <p> Start From {{ start_from }} &nbsp;&nbsp;&nbsp;  Ends At {{ end_at }} </p>
+
+      <br>
+      <p><strong> ITEMS </strong></p>
+
+      <ion-list>
+          <ion-item *ngFor='let item_0 of items'>
+             <ion-card>
+              <ion-card-header> {{ item_0.name }} </ion-card-header>
+              <ion-card-content>
+                <p> {{ item_0.name }}  </p>
+                <p> {{ item_0.priority }}  </p>
+                <p> {{ item_0.cost }}  </p>
+                <p> Frequency {{ item_0.frequency }}  </p>                  
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+      </ion-list>
+     
+      <ion-item *ngIf="!has_items"> 
+        <p> NO ITEMS FOR THIS EXPENSE </p>
+      </ion-item> 
+       
+  </ion-item>
+
+  <!-- show expense analysis chart -->
+  <ion-card>
+ 
+    <ion-card-header> Analysis Chart #{{ id }} </ion-card-header>
+    <ion-card-content>
+      <canvas #pieChart>  </canvas>
+    </ion-card-content>
+ 
+  </ion-card>
+
+  
+  <!--
+  <ion-card>
+
+    <ion-card-content>
+    
+      <p> HIGH PRIORITY {{ analysis.high.count }} {{ analysis.high.cost }} </p>
+      <p> MEDIUM PRIORITY {{ analysis.medium.count }} {{ analysis.medium.cost }} </p>
+      <p> LOW PRIORITY {{ analysis.low.count }} {{ analysis.low.cost }} </p>
+  
+    </ion-card-content>
+  
+  </ion-card>
+  -->
+ 
+               
+ <button ion-button block (click)='goToAddItems()'> ADD ITEMS </button>
+
+
+
+
+
+</ion-content>

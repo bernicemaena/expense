@@ -1,0 +1,53 @@
+<!--
+  Generated template for the ExpensePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>ADD EXPENSES</ion-title>
+    
+    
+    <ion-buttons end>
+        <button ion-button (click)="closeModal()" *ngIf='is_modal' >  <ion-icon name='close'></ion-icon> </button>
+     </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating> Expense name </ion-label>
+      <ion-input  type="text" value="" [(ngModel)]="name" ></ion-input>
+    </ion-item>
+  
+    <ion-item no-lines>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Start From</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="start_from">
+      </ion-datetime>
+    </ion-item>
+  
+    <ion-item no-lines>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>End at</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="end_at">
+      </ion-datetime>
+    </ion-item>
+
+    <br>
+
+    <p> {{ add_message }} </p>
+
+    <button ion-button (click)='addExpense()'> ADD EXPENSE </button>
+  </ion-list>
+</ion-content>
